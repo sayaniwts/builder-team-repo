@@ -327,3 +327,6 @@ add_action('rest_api_init', function() {
     }
 }, 10);
 /*----------------------------------------------------*/
+
+// test function
+echo 'test';
