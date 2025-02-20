@@ -67,3 +67,7 @@ add_shortcode('site_title', 'site_title_shortcode');
 
 // Show \ Hide page title (default: show)
 add_filter( 'hello_elementor_page_title', '__return_false' );
+
+
+//----
+echo 'marge test';
