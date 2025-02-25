@@ -84,7 +84,7 @@ add_filter('upload_mimes', 'cc_mime_types');
 
 
 
-// elementor loop grid hook for search&filter
+// OPTIONAL: elementor loop grid hook for search&filter
 add_action( 'elementor/query/<your_query_id>', 'your_function_name' );
 function your_function_name( $query ) {
 	$query->set( 'search_filter_id', 514 ); //change 514 to your filter ID
