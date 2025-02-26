@@ -2,3 +2,4 @@
 
 # Ignore a specific file
 /code-chunks.php
+*.md
