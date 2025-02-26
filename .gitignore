@@ -1,4 +1,4 @@
 .DS_Store
 
 # Ignore a specific file
-code-chunks.php
+/code-chunks.php
