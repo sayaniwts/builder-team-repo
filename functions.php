@@ -1,15 +1,4 @@
 <?php
-/**
- * Theme functions and definitions
- *
- * @package HelloElementorChild
- */
-
-/**
- * Load child theme css and optional scripts
- *
- * @return void
- */
 function hello_elementor_child_enqueue_scripts() {
 	wp_enqueue_style(
 		'hello-elementor-child-style',
@@ -17,14 +6,14 @@ function hello_elementor_child_enqueue_scripts() {
 		[
 			'hello-elementor-theme-style',
 		],
-		'1.0.0'
+		rand(1, 10)
 	);
 }
 add_action( 'wp_enqueue_scripts', 'hello_elementor_child_enqueue_scripts' );
 
 //-------Custom Js file----------------
 function mycustomscript_enqueue() {
-    wp_enqueue_script( 'custom-scripts', get_stylesheet_directory_uri() . '/script.js', array( 'jquery' ), true);
+    wp_enqueue_script( 'custom-scripts', get_stylesheet_directory_uri() . '/script.js', array( 'jquery' ), true, true);
 }
 add_action( 'wp_enqueue_scripts', 'mycustomscript_enqueue' );
 //-----------------------
@@ -69,5 +58,36 @@ add_shortcode('site_title', 'site_title_shortcode');
 add_filter( 'hello_elementor_page_title', '__return_false' );
 
 
-//----
-echo 'marge test';
+
+//** ------- this place is code-house for your reference.
+//** ------- Do not just copy paste, understand, modify as per your requirement & contribute if possible
+//** ------- Happy coding
+
+
+// wp security measures **** DO NOT REMOVE ANYTHING BELOW ***** //
+remove_action('wp_head', 'wp_generator');
+
+//Know more about this "xmlrpc_enabled" https://www.hostinger.in/tutorials/xmlrpc-wordpress
+add_filter( 'xmlrpc_enabled', '__return_false' );
+// wp security measures **** DO NOT REMOVE ANYTHING ABOVE ***** //
+
+
+
+//---------enable support for svg-----------//
+function cc_mime_types($mimes) {
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+}
+add_filter('upload_mimes', 'cc_mime_types');
+/*-------------------------------------------*/ 
+
+
+// Disable rest API access for unauthorized user
+add_action('rest_api_init', function() {
+    if (!is_user_logged_in() || !current_user_can('administrator')) {
+        wp_die('Forbidden', '403 Forbidden', array('response' => 403));
+    }
+}, 10);
+/*----------------------------------------------------*/
+
+
