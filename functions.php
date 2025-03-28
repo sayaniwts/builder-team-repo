@@ -1,5 +1,4 @@
 <?php
-
 function hello_elementor_child_enqueue_scripts() {
 	wp_enqueue_style(
 		'hello-elementor-child-style',
@@ -14,7 +13,7 @@ add_action( 'wp_enqueue_scripts', 'hello_elementor_child_enqueue_scripts' );
 
 //-------Custom Js file----------------
 function mycustomscript_enqueue() {
-    wp_enqueue_script( 'custom-scripts', get_stylesheet_directory_uri() . '/script.js', array( 'jquery' ), true);
+    wp_enqueue_script( 'custom-scripts', get_stylesheet_directory_uri() . '/script.js', array( 'jquery' ), true, true);
 }
 add_action( 'wp_enqueue_scripts', 'mycustomscript_enqueue' );
 //-----------------------
@@ -82,4 +81,12 @@ function cc_mime_types($mimes) {
 add_filter('upload_mimes', 'cc_mime_types');
 /*-------------------------------------------*/ 
 
+
+// Disable rest API access for unauthorized user
+add_action('rest_api_init', function() {
+    if (!is_user_logged_in() || !current_user_can('administrator')) {
+        wp_die('Forbidden', '403 Forbidden', array('response' => 403));
+    }
+}, 10);
+/*----------------------------------------------------*/
 
