@@ -1,8 +1,29 @@
-# Code Repository
-This repository is for builder team. Add optimized code here.
+# Builder Team
+This repository is for builder team. 
 
-<code>
-/*----------elementor email field special charecter validation-----------*/ 
+<h2>Gravity Form</h2>
+## 🗓️ Set Dynamic Date Range in Gravity Forms <br>
+### Datepicker 1 becomes minDate for datepicker 2 ————————— (Disable past dates from datepicker)
+
+<pre>
+gform.addFilter('gform_datepicker_options_pre_init', function (optionsObj, formId, fieldId) {
+    if (formId == 2 && fieldId == 23) {
+        optionsObj.minDate = 0;
+        optionsObj.onClose = function (dateText, inst) {
+            jQuery('#input_2_24')
+                .datepicker('option', 'minDate', dateText)
+                .datepicker('setDate', dateText);
+        };
+    }
+    return optionsObj;
+});
+</pre>
+
+
+<h2>Elementor Pro Form</h2>
+## 🎯 Elementor form email field special charecter validation
+
+<pre>
 function elementor_form_validation( $record, $ajax_handler ) {
     $fields = $record->get_field( [
         'id' => 'paste_ID',
@@ -16,4 +37,4 @@ function elementor_form_validation( $record, $ajax_handler ) {
     }
 }
 add_action( 'elementor_pro/forms/validation', 'elementor_form_validation', 10, 2 );
-</code>
+</pre>
