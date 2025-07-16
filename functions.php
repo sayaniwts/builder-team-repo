@@ -57,11 +57,40 @@ add_filter('upload_mimes', 'cc_mime_types');
 
 
 // Disable rest API access for unauthorized user
-add_action('rest_api_init', function() {
-    if (!is_user_logged_in() || !current_user_can('administrator')) {
-        wp_die('Forbidden', '403 Forbidden', array('response' => 403));
+add_filter('rest_authentication_errors', function ($result) {
+    // If another plugin already returned an error, respect it
+    if (!empty($result)) {
+        return $result;
     }
-}, 10);
+ 
+    // Always allow logged-in users
+    if (is_user_logged_in()) {
+        return true;
+    }
+ 
+    // Allow specific REST routes (Stripe, WooCommerce, ACF, etc.)
+    $allowed_routes = [
+        '/wc/',        // WooCommerce API
+        '/stripe/',    // Stripe Gateway
+        '/wc-stripe/', // Stripe Gateway extensions
+        '/wp/v3/',     // Core WP routes (optional)
+    ];
+ 
+    $request_uri = $_SERVER['REQUEST_URI'];
+ 
+    foreach ($allowed_routes as $allowed) {
+        if (strpos($request_uri, $allowed) !== false) {
+            return true; // Allow this route
+        }
+    }
+ 
+    // Block everything else
+    return new WP_Error(
+        'rest_forbidden',
+        __('REST API restricted. Please login.'),
+        ['status' => 403]
+    );
+});
 /*----------------------------------------------------*/
 
 // HTML Check validation: string replace for bad values

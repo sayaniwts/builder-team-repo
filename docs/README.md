@@ -1,10 +1,8 @@
-# Contribution Guidelines
-
-## Find your relevant CSS style from here
+# Find your relevant CSS style from here
 
 ![Screenshot](https://img001.prntscr.com/file/img001/h_C44STSQQCDxsUIAyGKAg.png)
 
-## For gradient border with a border radius....
+## For gradient border with a border radius.... [Thanks to Kankana]
 <pre>
 .round-gradient-box a{
     border: 2px solid transparent;
@@ -14,4 +12,4 @@
     border-radius: 50px;            
 }
 </pre>
-## Thanks to Kankana
+
