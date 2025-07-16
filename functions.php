@@ -46,11 +46,9 @@ add_shortcode('site_title', 'site_title_shortcode');
 //-----------------------------------
 
 
-
 //** ------- this place is code-house for your reference.
 //** ------- Do not just copy paste, understand, modify as per your requirement & contribute if possible
 //** ------- Happy coding
-
 
 // wp security measures **** DO NOT REMOVE ANYTHING BELOW ***** //
 remove_action('wp_head', 'wp_generator');
@@ -58,7 +56,6 @@ remove_action('wp_head', 'wp_generator');
 //Know more about this "xmlrpc_enabled" https://www.hostinger.in/tutorials/xmlrpc-wordpress
 add_filter( 'xmlrpc_enabled', '__return_false' );
 // wp security measures **** DO NOT REMOVE ANYTHING ABOVE ***** //
-
 
 
 //---------enable support for svg-----------//
@@ -93,3 +90,5 @@ function buffer_end(){
 add_action('after_setup_theme', 'buffer_start');
 add_action('shutdown', 'buffer_end');
 /*----------------------------------------------------*/
+
+
