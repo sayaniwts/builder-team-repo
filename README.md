@@ -1,6 +1,11 @@
 # Builder Team
 This repository is for builder team. 
 
+## 📚 CSS Documentation
+
+- 👉 [Contributing Guidelines](README.md)
+
+
 <h2>Gravity Form</h2>
 ## 🗓️ Set Dynamic Date Range in Gravity Forms <br>
 ### Datepicker 1 becomes minDate for datepicker 2 ————————— (Disable past dates from datepicker)
