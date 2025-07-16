@@ -3,7 +3,7 @@ This repository is for builder team.
 
 ## 📚 CSS Documentation
 
-- 👉 [Contributing Guidelines](README.md)
+- 👉 [CSS Contributions](docs/README.md)
 
 
 <h2>Gravity Form</h2>
