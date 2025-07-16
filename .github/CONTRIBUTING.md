@@ -1,4 +1,6 @@
-# Find your relevant CSS style from here
+# Contribution Guidelines
+
+## Find your relevant CSS style from here
 
 ![Screenshot](https://img001.prntscr.com/file/img001/h_C44STSQQCDxsUIAyGKAg.png)
 
