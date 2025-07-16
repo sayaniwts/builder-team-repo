@@ -14,13 +14,7 @@ add_action( 'wp_enqueue_scripts', 'hello_elementor_child_enqueue_scripts' );
 //-------Custom Js file----------------
 function mycustomscript_enqueue() {
     wp_enqueue_script( 'custom-scripts', get_stylesheet_directory_uri() . '/script.js', array( 'jquery' ), true, true);
-}
-add_action( 'wp_enqueue_scripts', 'mycustomscript_enqueue' );
-//-----------------------
 
-
-//-------Extra CDNs to enqueue[uncomments the default CDNs if required]----------------
-function extra_css_js_cdn() {
     // wp_enqueue_script('fancybox', '//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', ['jquery'], '3.5.7', true);
     // wp_enqueue_style('fancyBox-css','//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css', [], '3.5.7', 'all');
 	
@@ -30,9 +24,10 @@ function extra_css_js_cdn() {
 	
 	// wp_enqueue_style('animatecss','//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css', [], '3.5.2', 'all');
 }
+add_action( 'wp_enqueue_scripts', 'mycustomscript_enqueue' );
+//-----------------------
 
-add_action('wp_enqueue_scripts', 'extra_css_js_cdn');
-//---------------------------------------------------------------
+
 
 //Below codes helps to create a dynamic copyrights line footer
 function year_shortcode() {
@@ -49,9 +44,6 @@ function site_title_shortcode() {
 }
 add_shortcode('site_title', 'site_title_shortcode');
 //-----------------------------------
-
-// Show \ Hide page title (default: show)
-add_filter( 'hello_elementor_page_title', '__return_false' );
 
 
 
@@ -86,5 +78,18 @@ add_action('rest_api_init', function() {
 }, 10);
 /*----------------------------------------------------*/
 
-
-//echo 'test';
+// HTML Check validation: string replace for bad values
+function callback($buffer) {
+    $buffer2 = str_replace('role="listitem"', '', $buffer);
+	$buffer3 = str_replace('type="speculationrules"', '', $buffer2);
+    return $buffer3;
+}
+function buffer_start() {
+    ob_start("callback");
+}
+function buffer_end(){
+    ob_end_flush();
+}
+add_action('after_setup_theme', 'buffer_start');
+add_action('shutdown', 'buffer_end');
+/*----------------------------------------------------*/
