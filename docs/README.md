@@ -3,11 +3,12 @@
 ![Codepen Example](https://codepen.io/santanup789/full/myevELN)
 
 ## For gradient border with a border radius....
-<pre><code><a class="bde-button__button" href="#" target="_self" data-type="url"><span class="button-atom__text">Contact Us</span></a></code></pre>
 
 ```html
 <div class="card">
-  <a href="#">Read more</a>
+    <a class="bde-button__button" href="#" target="_self" data-type="url">
+        <span class="button-atom__text">Contact Us</span>
+    </a>
 </div>
 
 <pre>
