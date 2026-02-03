@@ -197,3 +197,24 @@ $('form.e-search-form').on('submit', function(e) {
     }
   });
 </pre>
+
+
+
+<strong>JS to detect IOS or Android</strong>
+<pre>
+function isIOS() {
+	return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+// Example usage:
+if (isIOS()) {
+	// Code to execute specifically for iOS devices (iPhone, iPad, iPod)
+	console.log("This is an iOS device (iPhone/iPad/iPod)");
+	// You could add classes to elements, redirect users, or display/hide specific content
+	document.body.classList.add('is-ios-device'); 
+    alert('IOS');
+} else {
+	// Code to execute for non-iOS devices
+    alert("This is not an iOS device");
+}
+</pre>
