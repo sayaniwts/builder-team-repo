@@ -11,7 +11,7 @@
     </a>
 </div>
 
-<pre>
+<style>
 body {
   height: 100vh;
   display: flex;
@@ -75,5 +75,5 @@ a::after {
 a:hover::after {
 	opacity: 1;
 }
-</pre>
+</style>
 
